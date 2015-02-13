@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @url_shortener.user_id %>
+</p>
+
+<p>
+  <strong>Original url:</strong>
+  <%= @url_shortener.original_url %>
+</p>
+
+<p>
+  <strong>Shortened url:</strong>
+  <%= @url_shortener.shortened_url %>
+</p>
+
+<%= link_to 'Edit', edit_url_shortener_path(@url_shortener) %> |
+<%= link_to 'Back', url_shorteners_path %>

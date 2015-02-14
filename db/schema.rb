@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213140514) do
+ActiveRecord::Schema.define(version: 20150214211947) do
 
   create_table "url_shorteners", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150213140514) do
     t.string   "shortened_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "used"
   end
 
   create_table "users", force: true do |t|

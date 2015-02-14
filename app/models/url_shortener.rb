@@ -3,6 +3,15 @@ class UrlShortener < ActiveRecord::Base
 
   belongs_to :user
 
+  def redirection
+    self.log
+    self.original_url
+  end
+
+  def log
+    self.used=self.used+1
+  end
+
   private
 
   def shortenurl

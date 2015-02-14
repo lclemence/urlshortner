@@ -3,6 +3,8 @@ class UrlShortener < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :original_url, :url => true
+
   def redirection
     self.log
     self.save!

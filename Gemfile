@@ -32,10 +32,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'hirb' #visualisation in console
 gem 'devise' #authentication
 gem 'murmurhash3' #hash a string
+gem "validate_url"
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'hirb' #visualisation in console
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

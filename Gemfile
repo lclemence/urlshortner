@@ -32,7 +32,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'devise'
+gem 'hirb' #visualisation in console
+gem 'devise' #authentication
+gem 'murmurhash3' #hash a string
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -11,17 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
   <div class="field">
     <%= f.label :original_url %><br>
     <%= f.text_field :original_url %>
-  </div>
-  <div class="field">
-    <%= f.label :shortened_url %><br>
-    <%= f.text_field :shortened_url %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,29 @@
+<h1>Listing url_shorteners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Original url</th>
+      <th>Shortened url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% url_shorteners.each do |url_shortener| %>
+      <tr>
+        <td><%= url_shortener.user_id %></td>
+        <td><%= url_shortener.original_url %></td>
+        <td><%= url_shortener.shortened_url %></td>
+        <td><%= link_to 'Destroy', url_shortener, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Url shortener', new_url_shortener_path %>

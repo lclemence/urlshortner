@@ -1,31 +1,14 @@
-<h1>Listing url_shorteners</h1>
+<p class="navbar-text pull-right">
+<% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <br/><br/>
+      <%if ! current_user.url_shorteners.nil?%>
+      <%= render 'list', url_shorteners: current_user.url_shorteners %>
+      <%end%>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Original url</th>
-      <th>Shortened url</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @url_shorteners.each do |url_shortener| %>
-      <tr>
-        <td><%= url_shortener.user_id %></td>
-        <td><%= url_shortener.original_url %></td>
-        <td><%= url_shortener.shortened_url %></td>
-        <td><%= link_to 'Show', url_shortener %></td>
-        <td><%= link_to 'Edit', edit_url_shortener_path(url_shortener) %></td>
-        <td><%= link_to 'Destroy', url_shortener, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Url shortener', new_url_shortener_path %>

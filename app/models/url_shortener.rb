@@ -5,6 +5,7 @@ class UrlShortener < ActiveRecord::Base
 
   def redirection
     self.log
+    self.save!
     self.original_url
   end
 

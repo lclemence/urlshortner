@@ -4,21 +4,17 @@ class UrlShortenersController < ApplicationController
   # GET /url_shorteners
   # GET /url_shorteners.json
   def index
-    @url_shorteners = UrlShortener.all
-  end
-
-  # GET /url_shorteners/1
-  # GET /url_shorteners/1.json
-  def show
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @url_shorteners = @user.url_shorteners
+    else
+      @url_shorteners = nil
+    end
   end
 
   # GET /url_shorteners/new
   def new
     @url_shortener = UrlShortener.new
-  end
-
-  # GET /url_shorteners/1/edit
-  def edit
   end
 
   # POST /url_shorteners
@@ -28,24 +24,10 @@ class UrlShortenersController < ApplicationController
 
     respond_to do |format|
       if @url_shortener.save
-        format.html { redirect_to @url_shortener, notice: 'Url shortener was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Url shortener was successfully created.' }
         format.json { render action: 'show', status: :created, location: @url_shortener }
       else
         format.html { render action: 'new' }
-        format.json { render json: @url_shortener.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /url_shorteners/1
-  # PATCH/PUT /url_shorteners/1.json
-  def update
-    respond_to do |format|
-      if @url_shortener.update(url_shortener_params)
-        format.html { redirect_to @url_shortener, notice: 'Url shortener was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
         format.json { render json: @url_shortener.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +38,7 @@ class UrlShortenersController < ApplicationController
   def destroy
     @url_shortener.destroy
     respond_to do |format|
-      format.html { redirect_to url_shorteners_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

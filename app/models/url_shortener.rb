@@ -1,7 +1,12 @@
-class UrlShortener < ActiveRecord::Base
+class UrlShortener
+  include Mongoid::Document
   before_create :shortenurl
 
   belongs_to :user
+
+  field :original_url,   :type => String
+  field :shortened_url,   :type => String
+  field :used,   :type => Integer
 
   validates :original_url, :url => true
 

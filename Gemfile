@@ -36,6 +36,9 @@ gem 'devise' #authentication
 gem 'murmurhash3' #hash a string
 gem "validate_url"
 
+gem "mongoid", "~> 4.0.0"
+gem "bson_ext"
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'hirb' #visualisation in console

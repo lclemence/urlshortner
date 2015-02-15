@@ -1,4 +1,3 @@
-require "awesome_print"
 class UrlShortenersController < ApplicationController
   before_action :set_url_shortener, only: [:destroy]
 

@@ -1,9 +1,10 @@
 class UrlShortenersController < ApplicationController
-  before_action :set_url_shortener, only: [:show, :edit, :update, :destroy]
+  before_action :set_url_shortener, only: [:destroy]
 
   # GET /url_shorteners
   # GET /url_shorteners.json
   def index
+    @url_shortener = UrlShortener.new
     if user_signed_in?
       @user = User.find(current_user.id)
       @url_shorteners = @user.url_shorteners
@@ -24,10 +25,10 @@ class UrlShortenersController < ApplicationController
 
     respond_to do |format|
       if @url_shortener.save
-        format.html { redirect_to root_path, notice: 'Url shortener was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @url_shortener }
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.json { render json: @url_shortener, status: :created, location: @url_shortener }
       else
-        format.html { render action: 'new' }
+        format.html { render action: "index" }
         format.json { render json: @url_shortener.errors, status: :unprocessable_entity }
       end
     end

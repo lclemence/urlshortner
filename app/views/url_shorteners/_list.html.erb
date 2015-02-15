@@ -18,12 +18,8 @@
         <td><%= url_shortener.original_url %></td>
         <td><%= url_shortener.shortened_url %></td>
         <td><%= url_shortener.used %></td>
-        <td><%= link_to 'Destroy', url_shortener, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to "Delete", url_shortener, :method => "delete" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Url shortener', new_url_shortener_path %>

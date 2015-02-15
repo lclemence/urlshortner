@@ -5,6 +5,7 @@
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
       <br/><br/>
       <%if ! current_user.url_shorteners.nil?%>
+      <%= render 'new'%>
       <%= render 'list', url_shorteners: current_user.url_shorteners %>
       <%end%>
 <% else %>

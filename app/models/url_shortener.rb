@@ -20,11 +20,11 @@ class UrlShortener
   field :shortened_url,   :type => String
   field :used,   :type => Integer, default: 0
 
-  validates :original_url, allow_nil: false, format: { with: REGEXP, allow_blank: false}
+  validates :original_url, allow_nil: false, uniqueness: true, format: { with: REGEXP, allow_blank: false}
 
   def redirection
     self.log
-    self.save!
+    self.save
     self.original_url
   end
 

@@ -41,6 +41,7 @@ gem "bson_ext"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'mongoid-rspec', '~> 2.1.0'
   gem 'hirb' #visualisation in console
 end
 # Use ActiveModel has_secure_password

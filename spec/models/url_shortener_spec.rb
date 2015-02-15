@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe UrlShortener, :type => :model do
+RSpec.describe UrlShortener, type: :model do
   before(:each) do
     generated_password = Devise.friendly_token.first(8)
     @user = User.create!(:email => 'test@gmail.com', :password => generated_password)

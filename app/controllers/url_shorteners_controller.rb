@@ -1,3 +1,4 @@
+require "awesome_print"
 class UrlShortenersController < ApplicationController
   before_action :set_url_shortener, only: [:destroy]
 
@@ -22,14 +23,15 @@ class UrlShortenersController < ApplicationController
   # POST /url_shorteners.json
   def create
     @url_shortener = UrlShortener.new(url_shortener_params)
-
     respond_to do |format|
       if @url_shortener.save
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Url was successfully created.' }
         format.json { render json: @url_shortener, status: :created, location: @url_shortener }
+        format.js { render json: @url_shortener, status: :created, location: @url_shortener }
       else
-        format.html { render action: "index" }
+        format.html { render action: 'index' }
         format.json { render json: @url_shortener.errors, status: :unprocessable_entity }
+        format.js   { render json: @url_shortener.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,4 +1,6 @@
-<%= form_for @url_shortener, remote: true do |f| %>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for(@url_shortener, remote: remote, html: {role: :form, 'data-model' => 'url_shortener'}) do |f| %>
 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <% if @url_shortener.errors.any? %>
     <div id="error_explanation">
@@ -14,11 +16,12 @@
 
   <%= f.hidden_field :user_id, value: current_user.id %>
 
-  <div class="field">
-    <%= f.label :original_url %><br>
-    <%= f.text_field :original_url %>
+  <div class="form-group">
+    <%= f.label 'Paste your long url here', class: 'control-label' %><br>
+    <%= f.text_field :original_url, style: 'width:230px', class: 'form-control' %>
+    <span class="help-block"></span>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Shorten the url', class: 'btn btn-default' %>
   </div>
 <% end %>

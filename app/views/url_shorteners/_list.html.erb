@@ -16,7 +16,7 @@
     <% url_shorteners.each do |url_shortener| %>
       <tr>
         <td><%= url_shortener.original_url %></td>
-        <td><%= url_shortener.shortened_url %></td>
+        <td><%= "#{request.protocol}#{request.host_with_port}/#{url_shortener.shortened_url}" %></td>
         <td><%= url_shortener.used %></td>
         <td><%= button_to "Delete", url_shortener, :method => "delete", class: 'btn btn-default' %></td>
       </tr>

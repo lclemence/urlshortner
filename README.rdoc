@@ -1,13 +1,13 @@
-== Url shortener
+# Url shortener
 
-= Requirements
+## Requirements
 
 * Install mongodb
-'''
-#TO SHOW DOCUMENTS IN MONGODB
-> mongo
-> show collections
-> db.users.find()
-> db.url_shorteners()
-'''
-* Ruby on Rails environment setup
+
+##TODO
+
+* Mumur gem is created a uniq hash so we could have the same link for 2 users, so we should add a distinction between this link
+* show the link right after the button "shorten the url"
+* Gemify the project so you can install it on a Web server
+* Beautify raising errors
+* Tests the controller UrlShorteners and User model

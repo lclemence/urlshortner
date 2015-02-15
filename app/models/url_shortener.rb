@@ -6,7 +6,7 @@ class UrlShortener
 
   field :original_url,   :type => String
   field :shortened_url,   :type => String
-  field :used,   :type => Integer
+  field :used,   :type => Integer, default: 0
 
   validates :original_url, :url => true
 
